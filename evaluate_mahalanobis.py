@@ -88,6 +88,14 @@ def main():
     svhn_scores = mahalanobis_score(svhn_features, class_means, precision)
     cifar100_scores = mahalanobis_score(cifar100_features, class_means, precision)
 
+    print("\nRaw Mahalanobis")
+    print("CIFAR-10 vs SVHN:", evaluate_pair(id_scores, svhn_scores))
+    print("CIFAR-10 vs CIFAR-100:", evaluate_pair(id_scores, cifar100_scores))
+
+    print("\nNegative Mahalanobis")
+    print("CIFAR-10 vs SVHN:", evaluate_pair(-id_scores, -svhn_scores))
+    print("CIFAR-10 vs CIFAR-100:", evaluate_pair(-id_scores, -cifar100_scores))
+
     print("\nCIFAR-10 vs SVHN")
     print("Mahalanobis:", evaluate_pair(id_scores, svhn_scores))
 
