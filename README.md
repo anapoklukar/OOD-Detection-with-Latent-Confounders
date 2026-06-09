@@ -1,7 +1,13 @@
-OOD Detection with Latent Confounders
+## Reproducing Main Results
 
-Course: Advanced Data Science (Spring 2026)
+1. Train ResNet baseline:
+python train_classifier.py
 
-Team Members:
-- Muhammad Shahzaib Khan
-- Ana Poklukar
+2. Evaluate baseline methods:
+python evaluate_baselines.py
+
+3. Train VAE classifier:
+python train_vae_classifier.py
+
+4. Evaluate proposed method:
+python evaluate_proposed.py
