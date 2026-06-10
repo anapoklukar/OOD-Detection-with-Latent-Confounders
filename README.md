@@ -76,6 +76,16 @@ data/       downloaded datasets
 models/     trained model checkpoints
 ```
 
+## Data
+
+The datasets are public and are downloaded automatically through `torchvision`:
+
+- CIFAR-10: in-distribution training and test data
+- SVHN: far-OOD test data
+- CIFAR-100: near-OOD test data
+
+No private credentials or restricted datasets are required.
+
 ## Setup
 
 Create and activate a virtual environment:
@@ -94,6 +104,14 @@ pip install -r requirements.txt
 If installing PyTorch with CUDA, use the command recommended by the official PyTorch installer for your GPU/CUDA version.
 
 ## Reproducing the Main Pipeline
+
+To run the full training and evaluation pipeline with one command:
+
+```bash
+bash scripts/run_main_pipeline.sh
+```
+
+This downloads the public datasets, trains both models, and prints the main metric tables. Full training can take a while, so the steps can also be run individually as shown below.
 
 First, check that the datasets can be loaded:
 
@@ -161,4 +179,3 @@ The reported metrics are:
 - **FPR95**
 
 Higher AUROC and AUPR are better. Lower FPR95 is better.
-
