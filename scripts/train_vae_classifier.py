@@ -1,7 +1,10 @@
+from pathlib import Path
+
 import torch
 import torch.optim as optim
 from tqdm import tqdm
 
+import _path  # noqa: F401
 from src.datasets import get_dataloaders
 from src.vae import VAEClassifier, vae_loss
 
@@ -73,8 +76,10 @@ def train():
             f"Val Acc={val_acc:.4f}"
         )
 
-    torch.save(model.state_dict(), "models/vae_classifier.pth")
-    print("Saved model to models/vae_classifier.pth")
+    checkpoint_path = Path("models/vae_classifier.pth")
+    checkpoint_path.parent.mkdir(parents=True, exist_ok=True)
+    torch.save(model.state_dict(), checkpoint_path)
+    print(f"Saved model to {checkpoint_path}")
 
 
 if __name__ == "__main__":

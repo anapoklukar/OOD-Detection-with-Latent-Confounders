@@ -3,6 +3,7 @@ import torch
 import torch.nn.functional as F
 from tqdm import tqdm
 
+import _path  # noqa: F401
 from src.datasets import get_dataloaders
 from src.vae import VAEClassifier
 from src.metrics import compute_ood_metrics

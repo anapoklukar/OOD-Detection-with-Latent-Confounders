@@ -1,8 +1,11 @@
+from pathlib import Path
+
 import torch
 import torch.nn as nn
 import torch.optim as optim
 from tqdm import tqdm
 
+import _path  # noqa: F401
 from src.datasets import get_dataloaders
 from src.models import get_resnet18
 
@@ -45,8 +48,10 @@ def train():
 
         print(f"Epoch {epoch+1}: Loss={avg_loss:.4f}, Train Acc={train_acc:.4f}")
 
-    torch.save(model.state_dict(), "models/cifar10_resnet18.pth")
-    print("Saved model to models/cifar10_resnet18.pth")
+    checkpoint_path = Path("models/cifar10_resnet18.pth")
+    checkpoint_path.parent.mkdir(parents=True, exist_ok=True)
+    torch.save(model.state_dict(), checkpoint_path)
+    print(f"Saved model to {checkpoint_path}")
 
 
 if __name__ == "__main__":

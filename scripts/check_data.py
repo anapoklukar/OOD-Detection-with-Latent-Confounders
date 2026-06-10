@@ -1,3 +1,4 @@
+import _path  # noqa: F401
 from src.datasets import get_dataloaders
 
 loaders = get_dataloaders()

@@ -2,6 +2,7 @@ import numpy as np
 import torch
 from tqdm import tqdm
 
+import _path  # noqa: F401
 from src.datasets import get_dataloaders
 from src.models import get_resnet18
 from src.ood_scores import mahalanobis_score
